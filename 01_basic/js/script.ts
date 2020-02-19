@@ -24,8 +24,8 @@ class Employee extends Person {
   public title: string;
   public salary: number;
 
-  constructor(first_name, last_name, age, job_title, employed_since, title, salary) {
-    super(first_name, last_name, age, job_title, employed_since);
+  constructor(first_name, job_title, employed_since, title, salary) {
+    super(first_name, job_title, employed_since);
     this.title = title;
     this.salary = salary;
   }
@@ -38,5 +38,5 @@ class Employee extends Person {
 let detlef = new Person('Detlef', 'Udeholm', 24, 'JavaScript Developer', 12);
 console.log(detlef.personFunction());
 
-let hannelore = new Employee('Hannelore', 'Kohl', 24, 'Project Manager', 12, 'Master of Disaster', 3000);
+let hannelore = new Employee('Hannelore', 'Project Manager', 12, 'Master of Disaster', 3000);
 console.log(hannelore.fullInfo());
