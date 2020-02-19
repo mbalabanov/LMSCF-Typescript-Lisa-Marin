@@ -1,4 +1,4 @@
-let MyClassInstances = [];
+let vehicleList = [];
 
 class Vehicle {
   public manufacturer: string;
@@ -36,6 +36,7 @@ class Truck extends Vehicle {
     super(manufacturer, model, kilometers_left, number_of_seats, fuel_type, year_of_production);
     this.cargo_load = cargo_load;
     this.cargo_dimensions = cargo_dimensions;
+    vehicleList.push(this);
   }
   truckLoad() {
     return `Your ${super.fullVehicleName()} was built in ${this.year_of_production} and can hold ${this.cargo_load}kg in ${this.cargo_dimensions}m<sup>2</sup>.`;
@@ -48,6 +49,7 @@ class Truck extends Vehicle {
 class Car extends Vehicle {
   constructor(manufacturer, model, kilometers_left, number_of_seats, fuel_type, year_of_production) {
     super(manufacturer, model, kilometers_left, number_of_seats, fuel_type, year_of_production);
+    vehicleList.push(this);
   }
   carStatement() {
     return `Your ${super.fullVehicleName()} was built in ${this.year_of_production} and has ${this.number_of_seats}.`;
@@ -59,18 +61,18 @@ class Car extends Vehicle {
 
 class Motorbike extends Vehicle {
     public number_of_tires: number;
-    static bikeList = [];
+
 
   constructor(manufacturer, model, kilometers_left, number_of_seats, fuel_type, year_of_production, number_of_tires) {
     super(manufacturer, model, kilometers_left, number_of_seats, fuel_type, year_of_production);
     this.number_of_tires = number_of_tires;
-    Motorbike.bikeList.push(this);
+    vehicleList.push(this);
   }
   bikeStatement() {
     return `Your ${super.fullVehicleName()} was built in ${this.year_of_production} and has ${this.number_of_tires} wheels.`;
   }
   public vehicleInfo() {
-    return `The general info for your vehicle is: ${this.manufacturer} ${this.model}, ${this.year_of_production}.`;
+    return `MOTORBIKE! The general info for your vehicle is: ${this.manufacturer} ${this.model}, ${this.year_of_production}.`;
   }
 
 }
@@ -93,6 +95,8 @@ console.log(LisasTruck.truckLoad());
 console.log(JohnsCar.carStatement());
 console.log(FritzsBike.bikeStatement());
 
-console.log(MyClassInstances);
-console.log(Motorbike.bikeList);
+console.log(vehicleList);
 
+for (let i of vehicleList) {
+  console.log(i.vehicleInfo());
+}

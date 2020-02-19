@@ -11,7 +11,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var MyClassInstances = [];
+var vehicleList = [];
 var Vehicle = /** @class */ (function () {
     function Vehicle(aa, bb, cc, dd, ee, ff) {
         this.manufacturer = aa;
@@ -39,6 +39,7 @@ var Truck = /** @class */ (function (_super) {
         var _this = _super.call(this, manufacturer, model, kilometers_left, number_of_seats, fuel_type, year_of_production) || this;
         _this.cargo_load = cargo_load;
         _this.cargo_dimensions = cargo_dimensions;
+        vehicleList.push(_this);
         return _this;
     }
     Truck.prototype.truckLoad = function () {
@@ -52,7 +53,9 @@ var Truck = /** @class */ (function (_super) {
 var Car = /** @class */ (function (_super) {
     __extends(Car, _super);
     function Car(manufacturer, model, kilometers_left, number_of_seats, fuel_type, year_of_production) {
-        return _super.call(this, manufacturer, model, kilometers_left, number_of_seats, fuel_type, year_of_production) || this;
+        var _this = _super.call(this, manufacturer, model, kilometers_left, number_of_seats, fuel_type, year_of_production) || this;
+        vehicleList.push(_this);
+        return _this;
     }
     Car.prototype.carStatement = function () {
         return "Your " + _super.prototype.fullVehicleName.call(this) + " was built in " + this.year_of_production + " and has " + this.number_of_seats + ".";
@@ -67,16 +70,15 @@ var Motorbike = /** @class */ (function (_super) {
     function Motorbike(manufacturer, model, kilometers_left, number_of_seats, fuel_type, year_of_production, number_of_tires) {
         var _this = _super.call(this, manufacturer, model, kilometers_left, number_of_seats, fuel_type, year_of_production) || this;
         _this.number_of_tires = number_of_tires;
-        Motorbike.bikeList.push(_this);
+        vehicleList.push(_this);
         return _this;
     }
     Motorbike.prototype.bikeStatement = function () {
         return "Your " + _super.prototype.fullVehicleName.call(this) + " was built in " + this.year_of_production + " and has " + this.number_of_tires + " wheels.";
     };
     Motorbike.prototype.vehicleInfo = function () {
-        return "The general info for your vehicle is: " + this.manufacturer + " " + this.model + ", " + this.year_of_production + ".";
+        return "MOTORBIKE! The general info for your vehicle is: " + this.manufacturer + " " + this.model + ", " + this.year_of_production + ".";
     };
-    Motorbike.bikeList = [];
     return Motorbike;
 }(Vehicle));
 var LisasTruck = new Truck('Scania', 'Serie V8', 40000, 3, 'Diesel', 2018, 25000, 100);
@@ -93,5 +95,8 @@ var LisasBike = new Motorbike('KTM', '450 SX', 34000, 1, 'Benzin', 2009, 2);
 console.log(LisasTruck.truckLoad());
 console.log(JohnsCar.carStatement());
 console.log(FritzsBike.bikeStatement());
-console.log(MyClassInstances);
-console.log(Motorbike.bikeList);
+console.log(vehicleList);
+for (var _i = 0, vehicleList_1 = vehicleList; _i < vehicleList_1.length; _i++) {
+    var i = vehicleList_1[_i];
+    console.log(i.vehicleInfo());
+}
