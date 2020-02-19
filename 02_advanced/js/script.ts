@@ -59,10 +59,12 @@ class Car extends Vehicle {
 
 class Motorbike extends Vehicle {
     public number_of_tires: number;
+    static bikeList = [];
 
   constructor(manufacturer, model, kilometers_left, number_of_seats, fuel_type, year_of_production, number_of_tires) {
     super(manufacturer, model, kilometers_left, number_of_seats, fuel_type, year_of_production);
     this.number_of_tires = number_of_tires;
+    Motorbike.bikeList.push(this);
   }
   bikeStatement() {
     return `Your ${super.fullVehicleName()} was built in ${this.year_of_production} and has ${this.number_of_tires} wheels.`;
@@ -70,6 +72,7 @@ class Motorbike extends Vehicle {
   public vehicleInfo() {
     return `The general info for your vehicle is: ${this.manufacturer} ${this.model}, ${this.year_of_production}.`;
   }
+
 }
 
 let LisasTruck = new Truck('Scania', 'Serie V8', 40000, 3, 'Diesel', 2018, 25000, 100);
@@ -90,7 +93,6 @@ console.log(LisasTruck.truckLoad());
 console.log(JohnsCar.carStatement());
 console.log(FritzsBike.bikeStatement());
 
-console.log('Vehicle Info:');
-
-console.log(LisasTruck.vehicleInfo());
+console.log(MyClassInstances);
+console.log(Motorbike.bikeList);
 

@@ -67,6 +67,7 @@ var Motorbike = /** @class */ (function (_super) {
     function Motorbike(manufacturer, model, kilometers_left, number_of_seats, fuel_type, year_of_production, number_of_tires) {
         var _this = _super.call(this, manufacturer, model, kilometers_left, number_of_seats, fuel_type, year_of_production) || this;
         _this.number_of_tires = number_of_tires;
+        Motorbike.bikeList.push(_this);
         return _this;
     }
     Motorbike.prototype.bikeStatement = function () {
@@ -75,6 +76,7 @@ var Motorbike = /** @class */ (function (_super) {
     Motorbike.prototype.vehicleInfo = function () {
         return "The general info for your vehicle is: " + this.manufacturer + " " + this.model + ", " + this.year_of_production + ".";
     };
+    Motorbike.bikeList = [];
     return Motorbike;
 }(Vehicle));
 var LisasTruck = new Truck('Scania', 'Serie V8', 40000, 3, 'Diesel', 2018, 25000, 100);
@@ -91,6 +93,5 @@ var LisasBike = new Motorbike('KTM', '450 SX', 34000, 1, 'Benzin', 2009, 2);
 console.log(LisasTruck.truckLoad());
 console.log(JohnsCar.carStatement());
 console.log(FritzsBike.bikeStatement());
-console.log('Vehicle Info:');
-console.log(LisasTruck.vehicleInfo());
-console.log(LisasTruck["super"].vehicleInfo());
+console.log(MyClassInstances);
+console.log(Motorbike.bikeList);
