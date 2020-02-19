@@ -1,3 +1,5 @@
+let MyClassInstances = [];
+
 class Vehicle {
   public manufacturer: string;
   public model: string;
@@ -6,13 +8,13 @@ class Vehicle {
   public fuel_type: string;
   public year_of_production: number;
 
-  constructor(a1, b1, c1, d1, e1, f1) {
-    this.manufacturer = a1;
-    this.model = b1;
-    this.kilometers_left = c1;
-    this.number_of_seats = d1;
-    this.fuel_type = e1;
-    this.year_of_production = f1;
+  constructor(aa, bb, cc, dd, ee, ff) {
+    this.manufacturer = aa;
+    this.model = bb;
+    this.kilometers_left = cc;
+    this.number_of_seats = dd;
+    this.fuel_type = ee;
+    this.year_of_production = ff;
   }
   public fullVehicleName() {
     return this.manufacturer + ' ' + this.model;
@@ -21,7 +23,9 @@ class Vehicle {
     let price = this.kilometers_left * this.number_of_seats;
     return `Your vehicle is a ${this.manufacturer} ${this.model}, it was built in ${this.year_of_production}. The price is ${price}.`;
   }
-  public 
+  public vehicleInfo() {
+    return `VEHICLE! The general info for your vehicle is: ${this.manufacturer} ${this.model}, ${this.year_of_production}.`;
+  }
 }
 
 class Truck extends Vehicle {
@@ -36,6 +40,9 @@ class Truck extends Vehicle {
   truckLoad() {
     return `Your ${super.fullVehicleName()} was built in ${this.year_of_production} and can hold ${this.cargo_load}kg in ${this.cargo_dimensions}m<sup>2</sup>.`;
   }
+  public vehicleInfo() {
+    return `TRUCK! The general info for your vehicle is: ${this.manufacturer} ${this.model}, ${this.year_of_production}.`;
+  }
 }
 
 class Car extends Vehicle {
@@ -44,6 +51,9 @@ class Car extends Vehicle {
   }
   carStatement() {
     return `Your ${super.fullVehicleName()} was built in ${this.year_of_production} and has ${this.number_of_seats}.`;
+  }
+  public vehicleInfo() {
+    return `CAR! The general info for your vehicle is: ${this.manufacturer} ${this.model}, ${this.year_of_production}.`;
   }
 }
 
@@ -57,13 +67,14 @@ class Motorbike extends Vehicle {
   bikeStatement() {
     return `Your ${super.fullVehicleName()} was built in ${this.year_of_production} and has ${this.number_of_tires} wheels.`;
   }
+  public vehicleInfo() {
+    return `The general info for your vehicle is: ${this.manufacturer} ${this.model}, ${this.year_of_production}.`;
+  }
 }
-
 
 let LisasTruck = new Truck('Scania', 'Serie V8', 40000, 3, 'Diesel', 2018, 25000, 100);
 let JochensTruck = new Truck('Volkswagen', 'Transporter', 30000, 8, 'Diesel', 1996, 10000, 20);
 let KevinsTruck = new Truck('Iveco', 'Stratis 430', 80000, 2, 'Diesel', 2010, 45000, 15000);
-
 
 let JennysCar = new Car('Porsche', 'Cayenne', 20000, 3, 'Diesel', 2018);
 let JohnsCar = new Car('Mercedes', 'S-Klasse', 30000, 8, 'Diesel', 1996);
@@ -78,4 +89,8 @@ let LisasBike = new Motorbike('KTM', '450 SX', 34000, 1, 'Benzin', 2009, 2);
 console.log(LisasTruck.truckLoad());
 console.log(JohnsCar.carStatement());
 console.log(FritzsBike.bikeStatement());
-console.table(Truck);
+
+console.log('Vehicle Info:');
+
+console.log(LisasTruck.vehicleInfo());
+
