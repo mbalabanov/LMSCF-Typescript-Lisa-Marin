@@ -92,6 +92,7 @@ var BrandonsBike = new Motorbike('Harley Davidson', 'Indian', 3200, 1, 'Benzin',
 var TomsBike = new Motorbike('Harley Davidson', 'Excelsior', 8100, 1, 'Benzin', 1964, 2);
 var FritzsBike = new Motorbike('Harley Davidson', 'Henderson', 0, 1, 'Benzin', 1971, 2);
 var LisasBike = new Motorbike('KTM', '450 SX', 34000, 1, 'Benzin', 2009, 2);
+var KajeensBike = new Motorbike('BMW', '450 SX', 34000, 1, 'Benzin', 2009, 2);
 console.log(LisasTruck.truckLoad());
 console.log(JohnsCar.carStatement());
 console.log(FritzsBike.bikeStatement());
